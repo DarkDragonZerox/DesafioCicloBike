@@ -31,7 +31,7 @@ class SetupCiclovias {
         "Providencia"
     )
 
-    fun init(): MutableList<Ciclovia> {
+    fun getCiclovias(): MutableList<Ciclovia> {
         var lista: MutableList<Ciclovia> = ArrayList()
         for (i in 0..9) {
             var ciclovia = Ciclovia(nombres[i], comunas[i])

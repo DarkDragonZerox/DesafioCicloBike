@@ -2,6 +2,9 @@ package cl.desafiolatam.ciclobike
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import cl.desafiolatam.ciclobike.databinding.ActivityMainBinding
+
 /*
     Recursos
         []view binding (activado)
@@ -18,8 +21,14 @@ import android.os.Bundle
 
  */
 class MainActivity : AppCompatActivity() {
+    val cicloviaAdapter = CicloviaAdapter()
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.rvLista.adapter = cicloviaAdapter
+        binding.rvLista.layoutManager = LinearLayoutManager(this)
     }
 }
