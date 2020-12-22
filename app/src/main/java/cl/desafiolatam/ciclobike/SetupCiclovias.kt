@@ -32,10 +32,24 @@ class SetupCiclovias {
     )
 
     fun getCiclovias(): MutableList<Ciclovia> {
+
         var lista: MutableList<Ciclovia> = ArrayList()
         for (i in 0..9) {
             var ciclovia = Ciclovia(nombres[i], comunas[i])
             lista.add(ciclovia)
+        }
+        return lista
+    }
+
+    fun getListaFiltrada(): MutableList<Ciclovia> {
+
+        var lista: MutableList<Ciclovia> = ArrayList()
+        for (i in 0..9) {
+            var ciclovia = Ciclovia(nombres[i], comunas[i])
+            when(ciclovia.comuna){
+                "Las Condes"->lista.add(ciclovia)
+            }
+
         }
         return lista
     }
