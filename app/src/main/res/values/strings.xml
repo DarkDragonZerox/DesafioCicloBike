@@ -2,4 +2,6 @@
     <string name="app_name">CicloBike</string>
     <string name="ciclovia">ciclovia</string>
     <string name="comuna">comuna</string>
+    <string name="sin_filtrar">SIN FILTRAR</string>
+    <string name="lista_filtrada">LISTA FILTRADA</string>
 </resources>

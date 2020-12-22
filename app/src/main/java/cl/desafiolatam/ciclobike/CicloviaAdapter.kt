@@ -12,7 +12,7 @@ import com.example.ciromine.ciclobike.SetupCiclovias
 class CicloviaAdapter: RecyclerView.Adapter<CicloviaAdapter.VH>() {
 
     val cicloviasSetUp = SetupCiclovias()
-    val listaCiclovias = cicloviasSetUp.getCiclovias()
+    var listaCiclovias = cicloviasSetUp.getCiclovias()
 
 
     class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,7 +39,7 @@ class CicloviaAdapter: RecyclerView.Adapter<CicloviaAdapter.VH>() {
     override fun onBindViewHolder(holder: VH, position: Int) {
 
         val lC = listaCiclovias.get(position)
-       holder.bind(lC)
+        holder.bind(lC)
 
     }
 
@@ -47,4 +47,14 @@ class CicloviaAdapter: RecyclerView.Adapter<CicloviaAdapter.VH>() {
         return listaCiclovias.size
     }
 
+    fun updateAdapterFilter(){
+        listaCiclovias.clear()
+        listaCiclovias=cicloviasSetUp.getListaFiltrada()
+        notifyDataSetChanged()
+    }
+    fun updateAdapterNoFilter(){
+        listaCiclovias.clear()
+        listaCiclovias=cicloviasSetUp.getCiclovias()
+        notifyDataSetChanged()
+    }
 }
