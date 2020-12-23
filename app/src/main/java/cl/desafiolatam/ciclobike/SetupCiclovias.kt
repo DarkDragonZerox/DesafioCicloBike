@@ -18,7 +18,7 @@ class SetupCiclovias {
         "Ciclovia 9",
         "Ciclovia 10"
     )
-    private val comunas = arrayOf(
+    private val comunas = listOf(
         "Las Condes",
         "La Reina",
         "Ñuñoa",
@@ -32,7 +32,7 @@ class SetupCiclovias {
     )
 
     fun getCiclovias(): MutableList<Ciclovia> {
-
+        comunas.toSet()
         var lista: MutableList<Ciclovia> = ArrayList()
         for (i in 0..9) {
             var ciclovia = Ciclovia(nombres[i], comunas[i])
@@ -53,4 +53,12 @@ class SetupCiclovias {
         }
         return lista
     }
+    fun getListaSpinner():List<String>{
+        val listaSpinner= mutableListOf<String>()
+        listaSpinner.add("Mostrar todo")
+        listaSpinner.addAll(comunas.toSet())
+
+        return listaSpinner
+    }
+
 }

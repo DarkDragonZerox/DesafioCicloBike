@@ -56,4 +56,5 @@ class CicloviaAdapter: RecyclerView.Adapter<CicloviaAdapter.VH>() {
         listaCiclovias=cicloviasSetUp.getCiclovias()
         notifyDataSetChanged()
     }
+
 }
