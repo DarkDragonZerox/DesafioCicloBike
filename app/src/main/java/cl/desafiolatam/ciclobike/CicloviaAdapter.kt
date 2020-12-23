@@ -46,9 +46,9 @@ class CicloviaAdapter: RecyclerView.Adapter<CicloviaAdapter.VH>() {
         return listaCiclovias.size
     }
 
-    fun updateAdapterFilter(){
+    fun updateAdapterFilter(comuna:String){
         listaCiclovias.clear()
-        listaCiclovias=cicloviasSetUp.getListaFiltrada()
+        listaCiclovias=cicloviasSetUp.getListaFiltrada(comuna)
         notifyDataSetChanged()
     }
     fun updateAdapterNoFilter(){

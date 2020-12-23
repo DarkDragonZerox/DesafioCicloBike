@@ -1,9 +1,13 @@
 package cl.desafiolatam.ciclobike
 
+import android.app.PendingIntent.getActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import cl.desafiolatam.ciclobike.databinding.ActivityMainBinding
 import com.example.ciromine.ciclobike.SetupCiclovias
@@ -55,17 +59,23 @@ class MainActivity : AppCompatActivity() {
         binding.rvLista.layoutManager = LinearLayoutManager(this)
         val spinAdapter= ArrayAdapter(this,android.R.layout.simple_spinner_item,listaSpinner)
         binding.spinnerBike.adapter=spinAdapter
-       /* binding.btFiltrar.setOnClickListener {
-            Log.d(TAG, "onCreate: Haciendo click en filtrar")
-            cicloviaAdapter.updateAdapterFilter()
-        }
-        binding.btLista.setOnClickListener {
-            Log.d(TAG, "onCreate: Haciendo click en filtrar")
-            cicloviaAdapter.updateAdapterNoFilter()
-        }*/
-    }
+        binding.spinnerBike.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                when (listaSpinner[position]) {
+                    "Mostrar todo" -> cicloviaAdapter.updateAdapterNoFilter()
+                    else -> cicloviaAdapter.updateAdapterFilter(listaSpinner[position])
 
-    companion object {
-        private const val TAG = "MainActivity"
-    }
+                }
+              //  Toast.makeText(applicationContext, "Item seleccionado ${listaSpinner[position]}" , Toast.LENGTH_SHORT).show()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
+
+    }/*
+            Si el valor es mostrar todo, se muestra la lista sin filtrar
+            en otro caso se muestra la lista filtrada por el valor
+            */
 }

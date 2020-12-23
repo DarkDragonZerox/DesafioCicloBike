@@ -41,13 +41,13 @@ class SetupCiclovias {
         return lista
     }
 
-    fun getListaFiltrada(): MutableList<Ciclovia> {
+    fun getListaFiltrada(pComuna:String): MutableList<Ciclovia> {
 
         var lista: MutableList<Ciclovia> = ArrayList()
         for (i in 0..9) {
             var ciclovia = Ciclovia(nombres[i], comunas[i])
             when(ciclovia.comuna){
-                "Las Condes"->lista.add(ciclovia)
+                pComuna -> lista.add(ciclovia)
             }
 
         }
