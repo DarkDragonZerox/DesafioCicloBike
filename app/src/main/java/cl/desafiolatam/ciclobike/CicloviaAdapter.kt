@@ -15,14 +15,13 @@ class CicloviaAdapter: RecyclerView.Adapter<CicloviaAdapter.VH>() {
     var listaCiclovias = cicloviasSetUp.getCiclovias()
 
 
-    class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //Cambiar por binding
-        val ciclovia = itemView.findViewById<TextView>(R.id.tv_cicloVia)
-        val comuna = itemView.findViewById<TextView>(R.id.tv_comuna)
+    class VH(var binding:ItemListBikeBinding) : RecyclerView.ViewHolder(binding.root) {
+
+
 
         fun bind(lC: Ciclovia) {
-            ciclovia.text = lC.nombre
-            comuna.text = lC.comuna
+            binding.tvCicloVia.text=lC.nombre
+            binding.tvComuna.text = lC.comuna
 
         }
 
@@ -31,8 +30,8 @@ class CicloviaAdapter: RecyclerView.Adapter<CicloviaAdapter.VH>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
 
         val binding=ItemListBikeBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        val view =binding.root
-        return VH(view)
+
+        return VH(binding)
 
     }
 
